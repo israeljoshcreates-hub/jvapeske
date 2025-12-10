@@ -36,14 +36,14 @@ pinCancel.addEventListener('click', ()=>{
 pinInput.addEventListener('keydown', (e)=>{ if(e.key === 'Enter') pinBtn.click(); });
 
 function loadProducts(){
-  // *** CRITICAL FIX: Use absolute path to products.json for GitHub Pages deployment ***
-  fetch('/jvapeske/products.json')
+  // *** CRITICAL FIX: Using absolute root path (/) to fix GitHub Pages file loading ***
+  fetch('/products.json') 
     .then(r=>r.json())
     .then(data=>{
       products = data;
       renderProductsTable();
     })
-    .catch(err=>console.error('Error loading products.json:', err)); // Added error logging
+    .catch(err=>console.error('Error loading products.json. Check path, data format, and deployment:', err)); // Enhanced error logging
 }
 
 productForm.addEventListener('submit', (e)=>{
