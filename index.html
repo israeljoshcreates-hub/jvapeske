@@ -7,29 +7,36 @@
   <meta name="description" content="J_VAPES — Minimalist vape shop. Browse ElfBar, GeekBar and more. Fast WhatsApp checkout.">
   <meta name="keywords" content="vape, elfbar, geekbar, disposable, j_vapes, jvapes">
 
+    <script>
+    // If age is not confirmed in localStorage, redirect to the age gate page
+    if (localStorage.getItem('jv_age_confirmed') !== '1') {
+      window.location.replace('age/'); 
+    }
+  </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
 
-    <meta property="og:title" content="J_VAPES — Vape Store">
+  <meta property="og:title" content="J_VAPES — Vape Store">
   <meta property="og:description" content="Minimalist vape shop. Browse top brands and checkout via WhatsApp.">
   <meta property="og:image" content="https://images.unsplash.com/photo-1534353473418-4cfa6c56fd38?auto=format&fit=crop&q=80&w=600">
   <meta property="og:type" content="website">
 
   <link rel="icon" href="/jvapes/favicon.svg" type="image/svg+xml">
 
-    <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="bg-gray-50 text-gray-900 antialiased">
-    <header class="bg-white shadow-sm sticky top-0 z-40">
+  <header class="bg-white shadow-sm sticky top-0 z-40">
     <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
       <div class="flex items-center gap-3">
-                <div class="text-xl font-black tracking-tighter cursor-pointer" onclick="if(window.app){window.app.view='store'; window.app.render();} else { location.href='./'; }">           J_VAPES<span class="text-gray-300">.KE</span>
+        <div class="text-xl font-black tracking-tighter cursor-pointer" onclick="if(window.app){window.app.view='store'; window.app.render();} else { location.href='./'; }">
+          J_VAPES<span class="text-gray-300">.KE</span>
         </div>
       </div>
       <div class="flex items-center gap-4">
         <button id="headerSearchBtn" aria-label="Focus search" onclick="document.getElementById('searchInput') && document.getElementById('searchInput').focus()" class="px-3 py-2 border rounded-md text-sm">Search</button>
         <a id="whatsappBtn" href="https://wa.me/254741658556" target="_blank" rel="noopener" class="hidden sm:inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-3 py-2 rounded-md text-sm">
-                    <span>WhatsApp</span>
+          <span>WhatsApp</span>
           <span class="text-xs">+254 741 658 556</span>
         </a>
         <button id="cartToggle" class="relative bg-gray-100 px-3 py-2 rounded-md">Cart <span id="cartCount" class="ml-2 text-sm text-gray-600">0</span></button>
@@ -39,14 +46,14 @@
 
   <main class="max-w-6xl mx-auto px-4 py-6">
     <section class="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <div class="md:col-span-4">
+      <div class="md:col-span-4">
         <div class="sticky top-20 bg-white/95 backdrop-blur z-40 py-4 px-4 rounded shadow-sm">
           <div class="flex flex-col md:flex-row gap-4 items-center">
-                        <div class="relative flex-1 w-full">
+            <div class="relative flex-1 w-full">
               <input id="searchInput" oninput="window.app && window.app.handleSearch(this.value)" type="search" placeholder="Search products..." aria-label="Search products" class="px-3 py-2 border rounded-md text-sm w-full focus:outline-none focus:ring" />
             </div>
 
-                        <div class="flex gap-2 overflow-x-auto no-scrollbar">
+            <div class="flex gap-2 overflow-x-auto no-scrollbar">
               <select id="brandFilter" aria-label="Filter by brand" onchange="window.app && window.app.handleFilter()" class="border rounded px-2 py-1 text-sm">
                 <option value="">Brand: All</option>
               </select>
@@ -67,18 +74,18 @@
         </div>
       </div>
 
-            <div class="md:col-span-4">
+      <div class="md:col-span-4">
         <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4"></div>
         <div id="noResults" class="hidden text-center mt-10 text-gray-500">No products match your search/filters.</div>
       </div>
     </section>
   </main>
 
-    <aside id="cartSidebar" class="fixed right-0 top-0 h-full w-80 transform translate-x-full bg-white shadow-lg transition-transform z-50">
+  <aside id="cartSidebar" class="fixed right-0 top-0 h-full w-80 transform translate-x-full bg-white shadow-lg transition-transform z-50">
     <div class="p-4 flex items-center justify-between border-b">
       <h4 class="font-medium">Your Cart</h4>
       <button id="closeCart" class="text-gray-500">Close</button>
-      </div>
+    </div>
     <div class="p-4 flex-1 overflow-auto" id="cartItems"></div>
     <div class="p-4 border-t">
       <div class="flex justify-between mb-2"><span>Total:</span><strong id="cartTotal">KES 0</strong></div>
@@ -86,22 +93,26 @@
     </div>
   </aside>
   
-    <footer class="bg-black text-white border-t mt-8">
+  <footer class="bg-black text-white border-t mt-8">
     <div class="max-w-6xl mx-auto px-4 py-6 text-sm">
       <div class="text-center space-y-1">
         <div class="font-semibold">J_VAPES.KE</div>
         <div>Nairobi, Kenya</div>
         <div>Strictly 18+ Legal Age</div>
         <div>Delivery Available 24/7</div>
-                <div class="flex items-center justify-center gap-4 mt-2 text-xs">
-          <a href="terms/" class="text-white hover:underline">Terms</a>           <a href="privacy/" class="text-white hover:underline">Privacy</a>           <a href="returns/" class="text-white hover:underline">Returns</a>           <a href="contact/" class="text-white hover:underline">Contact</a>         </div>
+        <div class="flex items-center justify-center gap-4 mt-2 text-xs">
+          <a href="terms/" class="text-white hover:underline">Terms</a>
+          <a href="privacy/" class="text-white hover:underline">Privacy</a>
+          <a href="returns/" class="text-white hover:underline">Returns</a>
+          <a href="contact/" class="text-white hover:underline">Contact</a>
+        </div>
         <div class="text-xs text-red-300 font-semibold mt-2">WARNING: These products contain nicotine. Nicotine is an addictive chemical. Not for use by minors, pregnant women, or non-smokers.</div>
         <div class="mt-3">© 2025 J_VAPES.KE</div>
       </div>
     </div>
   </footer>
 
-    <div id="warningBanner" class="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-white border rounded-md px-4 py-3 shadow-lg z-50 hidden max-w-3xl">
+  <div id="warningBanner" class="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-white border rounded-md px-4 py-3 shadow-lg z-50 hidden max-w-3xl">
     <div class="flex items-start gap-4">
       <div class="flex-1 text-sm text-gray-700">WARNING: These products contain nicotine. Nicotine is an addictive chemical. Not for use by minors, pregnant women, or non-smokers.</div>
       <div class="flex items-center gap-2">
@@ -110,5 +121,14 @@
     </div>
   </div>
   <script src="js/app.js"></script>
-</body>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // This ensures the app initializes properly after DOM load
+      if (window.app && window.app.init) {
+        window.app.init();
+      }
+    });
+  </script>
+  </body>
 </html>
